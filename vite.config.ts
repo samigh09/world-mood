@@ -1,73 +1,66 @@
-import { defineConfig } from "vite";
+import { defineConfig, splitVendorChunkPlugin } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
-import fs from 'fs';
-import os from 'os';
+import { visualizer } from 'rollup-plugin-visualizer';
+import viteCompression from 'vite-plugin-compression';
 
 // https://vitejs.dev/config/
-export default defineConfig(async ({ mode }) => {
-  const isDev = mode === 'development';
-  
-  const serverConfig: any = {
-    host: '0.0.0.0', // Listen on all network interfaces
+export default defineConfig({
+  plugins: [
+    react(),
+    splitVendorChunkPlugin(),
+    viteCompression({
+      algorithm: 'gzip',
+      ext: '.gz',
+    }),
+    viteCompression({
+      algorithm: 'brotliCompress',
+      ext: '.br',
+    }),
+    visualizer({
+      template: 'treemap',
+      open: false,
+      gzipSize: true,
+      brotliSize: true,
+      filename: 'bundle-analyzer.html'
+    })
+  ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
+  build: {
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-slot'],
+          utils: ['date-fns', 'zod', '@tanstack/react-query']
+        }
+      }
+    },
+    chunkSizeWarningLimit: 1000,
+  },
+  server: {
+    host: '0.0.0.0',
     port: 5173,
     strictPort: true,
-  };
-
-  // Configure server for network access
-  if (isDev) {
-    serverConfig.host = '0.0.0.0'; // Listen on all network interfaces
-    serverConfig.cors = true;
-    serverConfig.headers = {
+    cors: true,
+    headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
       'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
-    };
-    
-    // Get local IP address for network access
-    const networkInterfaces = os.networkInterfaces();
-    const localIp = Object.values(networkInterfaces)
-      .flat()
-      .find((iface) => 
-        iface && 
-        'family' in iface && 
-        'address' in iface &&
-        iface.family === 'IPv4' && 
-        !iface.internal
-      )?.address;
-    
-    if (localIp) {
-      console.log(`\n  Local:    http://localhost:${serverConfig.port}`);
-      console.log(`  Network:  http://${localIp}:${serverConfig.port}\n`);
-    }
+    },
+  },
+  preview: {
+    port: 5173,
+    cors: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
   }
-
-  return {
-    server: serverConfig,
-    preview: {
-      port: 5173,
-      strictPort: true,
-    },
-    plugins: [
-      react(),
-      isDev && componentTagger(),
-    ].filter(Boolean),
-    resolve: {
-      alias: [
-        {
-          find: "@",
-          replacement: path.resolve(__dirname, "./src"),
-        },
-      ],
-    },
-    optimizeDeps: {
-      esbuildOptions: {
-        target: 'es2020',
-      },
-    },
-    build: {
-      target: 'es2020',
-    },
-  };
 });
