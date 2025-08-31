@@ -1,9 +1,9 @@
 [build]
-  command = "bun run build"
+  command = "npm install && npm run build"
   publish = "dist"
   
 [build.environment]
-  NODE_VERSION = "22.16.0"
+  NODE_VERSION = "20.0.0"
   NPM_FLAGS = "--version"
   
 [[redirects]]
