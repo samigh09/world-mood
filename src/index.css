@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* World Mood Map Design System - Emotional Colors & Glowing Effects */
+
+@layer base {
+  :root {
+    /* Dark cosmic background for mood dots to pop */
+    --background: 222 22% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 22% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 22% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 160 84% 54%;
+    --primary-foreground: 222 22% 8%;
+
+    --secondary: 222 22% 12%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 22% 12%;
+    --muted-foreground: 215.4 16.3% 65%;
+
+    --accent: 280 100% 75%;
+    --accent-foreground: 222 22% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 22% 18%;
+    --input: 222 22% 12%;
+    --ring: 160 84% 54%;
+
+    --radius: 1rem;
+
+    /* Mood Colors - Emotional Palette */
+    --mood-happy: 160 84% 54%; /* Emerald green */
+    --mood-calm: 213 100% 65%; /* Sapphire blue */
+    --mood-energetic: 0 100% 65%; /* Ruby red */
+    --mood-excited: 45 100% 60%; /* Amber yellow */
+    --mood-creative: 280 100% 75%; /* Violet purple */
+    --mood-confident: 25 100% 60%; /* Orange */
+    --mood-peaceful: 180 50% 70%; /* Soft teal */
+    --mood-passionate: 340 100% 65%; /* Hot pink */
+
+    /* Glow Effects */
+    --glow-happy: 0 0 20px hsl(160 84% 54% / 0.4), 0 0 40px hsl(160 84% 54% / 0.2);
+    --glow-calm: 0 0 20px hsl(213 100% 65% / 0.4), 0 0 40px hsl(213 100% 65% / 0.2);
+    --glow-energetic: 0 0 20px hsl(0 100% 65% / 0.4), 0 0 40px hsl(0 100% 65% / 0.2);
+    --glow-excited: 0 0 20px hsl(45 100% 60% / 0.4), 0 0 40px hsl(45 100% 60% / 0.2);
+    --glow-creative: 0 0 20px hsl(280 100% 75% / 0.4), 0 0 40px hsl(280 100% 75% / 0.2);
+    --glow-confident: 0 0 20px hsl(25 100% 60% / 0.4), 0 0 40px hsl(25 100% 60% / 0.2);
+    --glow-peaceful: 0 0 20px hsl(180 50% 70% / 0.4), 0 0 40px hsl(180 50% 70% / 0.2);
+    --glow-passionate: 0 0 20px hsl(340 100% 65% / 0.4), 0 0 40px hsl(340 100% 65% / 0.2);
+
+    /* Gradients */
+    --gradient-cosmic: linear-gradient(135deg, hsl(222 22% 8%), hsl(222 22% 12%));
+    --gradient-aurora: linear-gradient(135deg, hsl(160 84% 54% / 0.1), hsl(213 100% 65% / 0.1), hsl(280 100% 75% / 0.1));
+    --gradient-mood-button: linear-gradient(135deg, hsl(var(--card)), hsl(222 22% 15%));
+
+    /* Animations */
+    --transition-glow: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Mood-specific utility classes */
+@layer utilities {
+  /* Mood Colors */
+  .mood-happy { @apply text-[hsl(var(--mood-happy))]; }
+  .mood-calm { @apply text-[hsl(var(--mood-calm))]; }
+  .mood-energetic { @apply text-[hsl(var(--mood-energetic))]; }
+  .mood-excited { @apply text-[hsl(var(--mood-excited))]; }
+  .mood-creative { @apply text-[hsl(var(--mood-creative))]; }
+  .mood-confident { @apply text-[hsl(var(--mood-confident))]; }
+  .mood-peaceful { @apply text-[hsl(var(--mood-peaceful))]; }
+  .mood-passionate { @apply text-[hsl(var(--mood-passionate))]; }
+
+  /* Mood Background Colors */
+  .bg-mood-happy { @apply bg-[hsl(var(--mood-happy))]; }
+  .bg-mood-calm { @apply bg-[hsl(var(--mood-calm))]; }
+  .bg-mood-energetic { @apply bg-[hsl(var(--mood-energetic))]; }
+  .bg-mood-excited { @apply bg-[hsl(var(--mood-excited))]; }
+  .bg-mood-creative { @apply bg-[hsl(var(--mood-creative))]; }
+  .bg-mood-confident { @apply bg-[hsl(var(--mood-confident))]; }
+  .bg-mood-peaceful { @apply bg-[hsl(var(--mood-peaceful))]; }
+  .bg-mood-passionate { @apply bg-[hsl(var(--mood-passionate))]; }
+
+  /* Glow Effects */
+  .glow-happy { box-shadow: var(--glow-happy); }
+  .glow-calm { box-shadow: var(--glow-calm); }
+  .glow-energetic { box-shadow: var(--glow-energetic); }
+  .glow-excited { box-shadow: var(--glow-excited); }
+  .glow-creative { box-shadow: var(--glow-creative); }
+  .glow-confident { box-shadow: var(--glow-confident); }
+  .glow-peaceful { box-shadow: var(--glow-peaceful); }
+  .glow-passionate { box-shadow: var(--glow-passionate); }
+
+  /* Pulsing animation for mood dots */
+  .pulse-mood {
+    animation: pulse-mood 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-mood {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
+  }
+
+  /* Enhanced animations for mood markers */
+  .animate-pulse-mood {
+    animation: pulse-mood 3s ease-in-out infinite;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  /* Mood popup animations */
+  .mood-popup .mapboxgl-popup-content {
+    animation: popupSlideIn 0.3s ease-out;
+  }
+
+  @keyframes popupSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Floating animation for mood buttons */
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Gradient backgrounds */
+  .bg-gradient-cosmic { background: var(--gradient-cosmic); }
+  .bg-gradient-aurora { background: var(--gradient-aurora); }
+  .bg-gradient-mood-button { background: var(--gradient-mood-button); }
+}

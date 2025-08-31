@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">world-mood-glow</string>
+    <string name="title_activity_main">world-mood-glow</string>
+    <string name="package_name">app.lovable.af89fddddd434c6caed760afb90f1c5c</string>
+    <string name="custom_url_scheme">app.lovable.af89fddddd434c6caed760afb90f1c5c</string>
+</resources>

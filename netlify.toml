@@ -1,0 +1,12 @@
+[build]
+  command = "bun run build"
+  publish = "dist"
+  
+[build.environment]
+  NODE_VERSION = "22.16.0"
+  NPM_FLAGS = "--version"
+  
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
