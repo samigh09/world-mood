@@ -1,11 +1,11 @@
 [build]
-  command = "npm install && npm install -g vite@4.5.0 && npm install --save-dev vite@4.5.0 && npx vite build"
+  command = "npm ci && npm run build"
   publish = "dist"
   
 [build.environment]
   NODE_VERSION = "20.9.0"
   NPM_FLAGS = "--legacy-peer-deps"
-  CI = "false"
+  CI = "true"
   
 [dev]
   command = "npm run dev"
