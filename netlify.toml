@@ -1,5 +1,5 @@
 [build]
-  command = "npm install -g pnpm && pnpm install && pnpm run build"
+  command = "npm install && npm install -g vite@4.5.0 && npm install --save-dev vite@4.5.0 && npx vite build"
   publish = "dist"
   
 [build.environment]
