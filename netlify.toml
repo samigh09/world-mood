@@ -13,6 +13,15 @@
   targetPort = 5173
   publish = "dist"
 
+[functions]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+
 # Handle SPA routing
 [[redirects]]
   from = "/*"
