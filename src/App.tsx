@@ -11,22 +11,8 @@ import { useEffect } from "react";
 
 const queryClient = new QueryClient();
 
-// Auth wrapper component
-const AuthWrapper = () => {
-  const { user, loading } = useAuth();
-  
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-      </div>
-    );
-  }
-
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
-
+// Directly render the Index component without authentication
+const AppContent = () => {
   return <Index />;
 };
 
@@ -41,8 +27,7 @@ const App = () => {
             <Sonner />
             <BrowserRouter>
               <Routes>
-                <Route path="/" element={<AuthWrapper />} />
-                <Route path="/login" element={<AuthForm />} />
+                <Route path="/" element={<AppContent />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
