@@ -3,7 +3,7 @@
   publish = "dist"
   
 [build.environment]
-  NODE_VERSION = "20.0.0"
+  NODE_VERSION = "20.9.0"
   NPM_FLAGS = "--legacy-peer-deps"
   CI = "false"
   
