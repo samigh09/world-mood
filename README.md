@@ -1,8 +1,12 @@
-# Welcome to your Lovable project
+# World Mood Glow
 
-## Project info
+[![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_NETLIFY_SITE_ID/deploy-status)](https://app.netlify.com/sites/YOUR_NETLIFY_SITE_NAME/overview)
 
-**URL**: https://lovable.dev/projects/af89fddd-dd43-4c6c-aed7-60afb90f1c5c
+A real-time global mood visualization application.
+
+## Project Info
+
+**Demo**: [View on Netlify](https://YOUR_NETLIFY_SITE_NAME.netlify.app)
 
 ## How can I edit this code?
 
