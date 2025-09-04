@@ -1,6 +1,7 @@
 [build]
-  command = "npm install && npm run build"
+  command = "npm ci --include=dev && npx vite build"
   publish = "dist"
+  environment = { NODE_VERSION = "18" }
   
 [build.environment]
   NODE_VERSION = "18"
